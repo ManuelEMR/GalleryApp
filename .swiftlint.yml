@@ -1,0 +1,23 @@
+opt_in_rules:
+  - force_unwrapping
+  - implicitly_unwrapped_optional
+  - prohibited_super_call
+  - redundant_nil_coalescing
+disabled_rules: # rule identifiers to exclude from running
+  - file_length
+  - line_length
+  - function_body_length
+  - function_parameter_count
+  - type_body_length
+  - trailing_comma
+  - trailing_whitespace
+large_tuple:
+  warning: 5
+type_name:
+  max_length: 60
+nesting:
+  type_level: 2
+identifier_name:
+  min_length: 2
+excluded:
+  - Pods
