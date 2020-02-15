@@ -23,6 +23,12 @@
 		6F69783B23F8A0260015FD11 /* Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F69781C23F8A00A0015FD11 /* Data.framework */; };
 		6F69783C23F8A0260015FD11 /* Data.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6F69781C23F8A00A0015FD11 /* Data.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6F69784523F8A2A10015FD11 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F69784423F8A2A10015FD11 /* Album.swift */; };
+		6F69784823F8A4C80015FD11 /* AlbumsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F69784723F8A4C80015FD11 /* AlbumsRepository.swift */; };
+		6F69784A23F8A4CF0015FD11 /* AlbumsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F69784923F8A4CF0015FD11 /* AlbumsApi.swift */; };
+		6F69784D23F8A5370015FD11 /* BaseApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F69784C23F8A5370015FD11 /* BaseApi.swift */; };
+		6F69785123F8A6B70015FD11 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F69785023F8A6B70015FD11 /* Photo.swift */; };
+		6F69785323F8A6C80015FD11 /* PhotosApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F69785223F8A6C80015FD11 /* PhotosApi.swift */; };
+		6F69785523F8A81B0015FD11 /* BaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F69785423F8A81B0015FD11 /* BaseRepository.swift */; };
 		6FAA8F5BE3A7595082A71311 /* Pods_Gallery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7873A04FBFDCEAE703CB37DB /* Pods_Gallery.framework */; };
 		9686CA772EB2AE4C9A4C5C06 /* Pods_Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CE8BCDB40BCC9FB5340780C /* Pods_Data.framework */; };
 /* End PBXBuildFile section */
@@ -96,6 +102,12 @@
 		6F69783023F8A01B0015FD11 /* Domain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Domain.h; sourceTree = "<group>"; };
 		6F69783123F8A01B0015FD11 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6F69784423F8A2A10015FD11 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
+		6F69784723F8A4C80015FD11 /* AlbumsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsRepository.swift; sourceTree = "<group>"; };
+		6F69784923F8A4CF0015FD11 /* AlbumsApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsApi.swift; sourceTree = "<group>"; };
+		6F69784C23F8A5370015FD11 /* BaseApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseApi.swift; sourceTree = "<group>"; };
+		6F69785023F8A6B70015FD11 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		6F69785223F8A6C80015FD11 /* PhotosApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosApi.swift; sourceTree = "<group>"; };
+		6F69785423F8A81B0015FD11 /* BaseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRepository.swift; sourceTree = "<group>"; };
 		722CD430BCE4A4E9EF42938C /* Pods-Data.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Data.debug.xcconfig"; path = "Target Support Files/Pods-Data/Pods-Data.debug.xcconfig"; sourceTree = "<group>"; };
 		761E736F8EB0151298CFFB58 /* Pods-Gallery.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gallery.debug.xcconfig"; path = "Target Support Files/Pods-Gallery/Pods-Gallery.debug.xcconfig"; sourceTree = "<group>"; };
 		7873A04FBFDCEAE703CB37DB /* Pods_Gallery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gallery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -187,6 +199,7 @@
 		6F69781D23F8A00A0015FD11 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				6F69784B23F8A52C0015FD11 /* Foundation */,
 				6F69784023F8A23C0015FD11 /* Modules */,
 				6F69781E23F8A00A0015FD11 /* Data.h */,
 				6F69781F23F8A00A0015FD11 /* Info.plist */,
@@ -216,6 +229,7 @@
 		6F69784023F8A23C0015FD11 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				6F69784E23F8A6A20015FD11 /* Photos */,
 				6F69784223F8A24B0015FD11 /* Albums */,
 			);
 			path = Modules;
@@ -225,6 +239,8 @@
 			isa = PBXGroup;
 			children = (
 				6F69784323F8A2990015FD11 /* Models */,
+				6F69784723F8A4C80015FD11 /* AlbumsRepository.swift */,
+				6F69784923F8A4CF0015FD11 /* AlbumsApi.swift */,
 			);
 			path = Albums;
 			sourceTree = "<group>";
@@ -233,6 +249,32 @@
 			isa = PBXGroup;
 			children = (
 				6F69784423F8A2A10015FD11 /* Album.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		6F69784B23F8A52C0015FD11 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				6F69784C23F8A5370015FD11 /* BaseApi.swift */,
+				6F69785423F8A81B0015FD11 /* BaseRepository.swift */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
+		6F69784E23F8A6A20015FD11 /* Photos */ = {
+			isa = PBXGroup;
+			children = (
+				6F69784F23F8A6B00015FD11 /* Models */,
+				6F69785223F8A6C80015FD11 /* PhotosApi.swift */,
+			);
+			path = Photos;
+			sourceTree = "<group>";
+		};
+		6F69784F23F8A6B00015FD11 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6F69785023F8A6B70015FD11 /* Photo.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -511,6 +553,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F69784523F8A2A10015FD11 /* Album.swift in Sources */,
+				6F69785523F8A81B0015FD11 /* BaseRepository.swift in Sources */,
+				6F69784D23F8A5370015FD11 /* BaseApi.swift in Sources */,
+				6F69784A23F8A4CF0015FD11 /* AlbumsApi.swift in Sources */,
+				6F69785323F8A6C80015FD11 /* PhotosApi.swift in Sources */,
+				6F69784823F8A4C80015FD11 /* AlbumsRepository.swift in Sources */,
+				6F69785123F8A6B70015FD11 /* Photo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

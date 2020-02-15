@@ -1,5 +1,5 @@
 //
-//  Album.swift
+//  Photo.swift
 //  Data
 //
 //  Created by Manuel Munoz on 15/02/2020.
@@ -8,7 +8,10 @@
 
 import Foundation
 
-public struct Album: Decodable {
+public struct Photo: Decodable {
+    public let albumId: Int
     public let id: Int
     public let title: String
+    public let url: String
+    public let thumbnailUrl: String
 }
