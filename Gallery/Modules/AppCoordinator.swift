@@ -20,7 +20,9 @@ class AppCoordinator {
         let albumsNVC = UINavigationController(rootViewController: albumsVC)
         albumsNVC.tabBarItem = UITabBarItem(title: "Albums", image: nil, selectedImage: nil)
         
-        let photosNVC = UINavigationController(rootViewController: UIViewController())
+        let photosVC = PhotosViewController.instantiate(storyboardName: Storyboards.main)
+        photosVC.viewModel = container.resolve(PhotosViewModel.self)
+        let photosNVC = UINavigationController(rootViewController: photosVC)
         photosNVC.tabBarItem = UITabBarItem(title: "Photos", image: nil, selectedImage: nil)
         
         initialViewController.viewControllers = [albumsNVC, photosNVC]

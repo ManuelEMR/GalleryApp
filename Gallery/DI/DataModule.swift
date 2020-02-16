@@ -24,5 +24,6 @@ class DataModule: SwinjectModule {
         }
         
         registerRepository(AlbumsRepository.self)
+        registerRepository(PhotosRepository.self)
     }
 }

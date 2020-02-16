@@ -27,33 +27,20 @@ class AlbumsViewModel {
     }
     
     private func loadAlbums() {
-        var count = 0
-        var albumCount = 0
         albumsRepository.getAlbums()
             .map { $0.prefix(upTo: 30) }
             .flatMapLatest { albumModels in
                 Signal.init(sequence: albumModels)
-        }
-        .handleEvents(receiveOutput: { _ in
-            print("albumCount \(albumCount)")
-            albumCount += 1
-        })
-        .flatMapConcat { albumModel in
-            return self.albumsRepository.getPhotosOf(albumId: albumModel.id)
-                .flatMapError { _ in Signal(just: []) }
-                .map { Album(albumModel: albumModel, photos: $0) }
-        }
-        .handleEvents(receiveOutput: { _ in
-            print("Received \(count)")
-            count += 1
-        })
-        .collect()
-        .handleEvents(receiveOutput: { _ in
-            print("Received All")
-        })
-        .subscribe(on: ExecutionContext.global())
-        .receive(on: ExecutionContext.main)
-        .observeNext { self._albums.value = $0 }
-        .dispose(in: disposable)
+            }
+            .flatMapConcat { albumModel in
+                return self.albumsRepository.getPhotosOf(albumId: albumModel.id)
+                    .flatMapError { _ in Signal(just: []) }
+                    .map { Album(albumModel: albumModel, photos: $0) }
+            }
+            .collect()
+            .subscribe(on: ExecutionContext.global())
+            .receive(on: ExecutionContext.main)
+            .observeNext { self._albums.value = $0 }
+            .dispose(in: disposable)
     }
 }

@@ -18,5 +18,9 @@ class PresentationModule: SwinjectModule {
         container.register(AlbumsViewModel.self) { r in
             AlbumsViewModel(albumsRepository: r.resolve(AlbumsRepository.self)!)
         }
+        
+        container.register(PhotosViewModel.self) { r in
+            PhotosViewModel(photosRepository: r.resolve(PhotosRepository.self)!)
+        }
     }
 }
