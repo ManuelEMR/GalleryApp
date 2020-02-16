@@ -1,28 +1,28 @@
 //
-//  PhotosViewController.swift
+//  AlbumPhotosViewController.swift
 //  Gallery
 //
-//  Created by Manuel Munoz on 15/02/2020.
+//  Created by Manuel Munoz on 16/02/2020.
 //  Copyright © 2020 Manuel Munoz. All rights reserved.
 //
 
 import UIKit
 
-class PhotosViewController: UIViewController {
-    
+class AlbumPhotosViewController: UIViewController {
+
     @IBOutlet var collectionView: UICollectionView!
     
-    var viewModel: PhotosViewModel! //swiftlint:disable:this implicitly_unwrapped_optional
+    var viewModel: AlbumPhotosViewModel! //swiftlint:disable:this implicitly_unwrapped_optional
     
     private let gridDelegate = GridCollectionViewDelegate(numberOfRows: 3, spacing: 0)
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupViews()
         setupBindings()
     }
-    
+        
     private func setupViews() {
         
         navigationItem.title = "Photos"
@@ -40,7 +40,7 @@ class PhotosViewController: UIViewController {
     }
 }
 
-extension PhotosViewController: UICollectionViewDataSource {
+extension AlbumPhotosViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         viewModel.photos.value.count
     }

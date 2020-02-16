@@ -10,21 +10,13 @@ import UIKit
 
 class AppCoordinator {
     
-    lazy var initialViewController: TabBarViewController = {
-        TabBarViewController.instantiate(storyboardName: Storyboards.main)
-    }()
+    var initialViewController: UIViewController {
+        homeCoordinator.initialViewController
+    }
+    
+    private let homeCoordinator = HomeCoordinator()
     
     func start() {
-        let albumsVC = AlbumsViewController.instantiate(storyboardName: Storyboards.main)
-        albumsVC.viewModel = container.resolve(AlbumsViewModel.self)
-        let albumsNVC = UINavigationController(rootViewController: albumsVC)
-        albumsNVC.tabBarItem = UITabBarItem(title: "Albums", image: nil, selectedImage: nil)
-        
-        let photosVC = PhotosViewController.instantiate(storyboardName: Storyboards.main)
-        photosVC.viewModel = container.resolve(PhotosViewModel.self)
-        let photosNVC = UINavigationController(rootViewController: photosVC)
-        photosNVC.tabBarItem = UITabBarItem(title: "Photos", image: nil, selectedImage: nil)
-        
-        initialViewController.viewControllers = [albumsNVC, photosNVC]
+        homeCoordinator.start()
     }
 }

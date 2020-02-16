@@ -9,12 +9,17 @@
 import UIKit
 import Bond
 
+protocol AlbumsViewControllerDelegate: AnyObject {
+    func onAlbumClicked(album: Album)
+}
+
 class AlbumsViewController: UIViewController {
 
     @IBOutlet var collectionView: UICollectionView!
     private let gridDelegate = GridCollectionViewDelegate(spacing: 0) //swiftlint:disable:this weak_delegate
     
     var viewModel: AlbumsViewModel! //swiftlint:disable:this implicitly_unwrapped_optional
+    weak var delegate: AlbumsViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +36,10 @@ class AlbumsViewController: UIViewController {
         collectionView.delegate = gridDelegate
         let spacing = gridDelegate.spacing
         collectionView.contentInset = UIEdgeInsets(top: spacing * 2, left: 0, bottom: 0, right: 0)
+        gridDelegate.setOnCellSelected { [unowned self] (indexPath) in
+            let album = self.viewModel.albums.value[indexPath.item]
+            self.delegate?.onAlbumClicked(album: album)
+        }
     }
     
     private func setupBindings() {

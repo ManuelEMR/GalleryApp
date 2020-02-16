@@ -10,4 +10,5 @@ import Foundation
 
 struct Storyboards {
     static let main = "Main"
+    static let album = "Album"
 }
