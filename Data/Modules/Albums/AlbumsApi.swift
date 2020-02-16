@@ -31,7 +31,7 @@ public enum AlbumsApi: BaseApi, URLRequestConvertible {
         case .getAlbums:
             return "/albums"
         case .albumPhotos(let albumId):
-            return "/albums\(albumId)/photos"
+            return "/albums/\(albumId)/photos"
         }
     }
     

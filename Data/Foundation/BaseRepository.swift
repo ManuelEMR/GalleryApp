@@ -7,35 +7,12 @@
 //
 
 import Foundation
-import Alamofire
-import ReactiveKit
 
-public class BaseRepository<T: BaseApi & URLRequestConvertible> {
-    let api: T
+public class BaseRepository<T: Api> {
+    let api: ApiProvider<T>
     
-    init(api: T) {
+    required public init(api: ApiProvider<T>) {
         self.api = api
-    }
-    
-    func request<U: Decodable>(endpoint: T) -> Signal<U, DataError> {
-        Signal<U, AFError> { observer in
-            let task = AF.request(endpoint)
-                .responseDecodable(of: U.self) { response in
-                    switch response.result {
-                    case .success(let item):
-                        observer.receive(item)
-                        observer.receive(completion: .finished)
-                    case .failure(let err):
-                        observer.receive(completion: .failure(err))
-                    }
-            }
-            
-            return BlockDisposable {
-                task.cancel()
-            }
-        }
-        .subscribe(on: ExecutionContext.global())
-        .mapError { .unknown(msg: $0.errorDescription) }
     }
 }
 

@@ -11,11 +11,11 @@ import ReactiveKit
 
 public class AlbumsRepository: BaseRepository<AlbumsApi> {
     
-    public func getAlbums() -> Signal<[Album], DataError> {
-        request(endpoint: .getAlbums)
+    public func getAlbums() -> Signal<[AlbumModel], DataError> {
+        api.request(endpoint: .getAlbums)
     }
     
-    public func getPhotosOf(albumId: Int) -> Signal<[Photo], DataError> {
-        request(endpoint: .albumPhotos(albumId: albumId))
+    public func getPhotosOf(albumId: Int) -> Signal<[PhotoModel], DataError> {
+        api.request(endpoint: .albumPhotos(albumId: albumId))
     }
 }
