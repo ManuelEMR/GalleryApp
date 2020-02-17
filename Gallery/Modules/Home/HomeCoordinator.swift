@@ -21,12 +21,14 @@ class HomeCoordinator: Coordinator {
         albumsVC.viewModel = container.resolve(AlbumsViewModel.self)
         albumsVC.delegate = self
         let albumsNVC = UINavigationController(rootViewController: albumsVC)
+        albumsNVC.hero.isEnabled = true
         albumsNVC.tabBarItem = UITabBarItem(title: "Albums", image: nil, selectedImage: nil)
         
         let photosVC = PhotosViewController.instantiate(storyboardName: Storyboards.main)
         photosVC.viewModel = container.resolve(PhotosViewModel.self)
         photosVC.delegate = self
         let photosNVC = UINavigationController(rootViewController: photosVC)
+        photosNVC.hero.isEnabled = true
         photosNVC.tabBarItem = UITabBarItem(title: "Photos", image: nil, selectedImage: nil)
         
         initialViewController.viewControllers = [albumsNVC, photosNVC]

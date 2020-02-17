@@ -29,15 +29,15 @@ class PhotosViewController: UIViewController {
     }
     
     private func setupViews() {
-        
         navigationItem.title = "Photos"
         
         collectionView.dataSource = self
         collectionView.delegate = gridDelegate
         let spacing = gridDelegate.spacing
         collectionView.contentInset = UIEdgeInsets(top: spacing * 2, left: 0, bottom: 0, right: 0)
-        gridDelegate.setOnCellSelected { (indexPath) in
+        gridDelegate.setOnCellSelected { [unowned self] (indexPath) in
             let photo = self.viewModel.photos.value[indexPath.item]
+            self.setupHeroAnimations(indexPath: indexPath, photo: photo)
             self.delegate?.onPhotoClicked(photo: photo)
         }
     }
@@ -46,6 +46,11 @@ class PhotosViewController: UIViewController {
         viewModel.photos.bind(to: self) { vc, _ in
             vc.collectionView.reloadData()
         }
+    }
+    
+    private func setupHeroAnimations(indexPath: IndexPath, photo: Photo) {
+        let cell = collectionView.cellForItem(at: indexPath)
+        cell?.hero.id = String(photo.id)
     }
 }
 

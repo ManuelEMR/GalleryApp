@@ -32,4 +32,3 @@ extension Storyboarded where Self: UIViewController {
         return storyboard.instantiateViewController(withIdentifier: className) as! Self // swiftlint:disable:this force_cast
     }
 }
-

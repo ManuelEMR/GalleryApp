@@ -8,6 +8,7 @@
 
 import UIKit
 import Bond
+import Hero
 
 class PhotoDetailViewController: UIViewController {
 
@@ -19,7 +20,13 @@ class PhotoDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
             
+        setupViews()
         setupBindings()
+    }
+    
+    private func setupViews() {
+        self.hero.isEnabled = true
+        imageView.hero.id = String(viewModel.photo.value.id)
     }
     
     private func setupBindings() {

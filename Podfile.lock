@@ -4,6 +4,7 @@ PODS:
     - Differ (~> 1.4)
     - ReactiveKit (~> 3.14)
   - Differ (1.4.4)
+  - Hero (1.5.0)
   - Kingfisher (5.13.0):
     - Kingfisher/Core (= 5.13.0)
   - Kingfisher/Core (5.13.0)
@@ -14,6 +15,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 5.0)
   - Bond
+  - Hero
   - Kingfisher
   - ReactiveKit
   - SwiftLint
@@ -24,6 +26,7 @@ SPEC REPOS:
     - Alamofire
     - Bond
     - Differ
+    - Hero
     - Kingfisher
     - ReactiveKit
     - SwiftLint
@@ -33,11 +36,12 @@ SPEC CHECKSUMS:
   Alamofire: 58ff2bfb8daaacaa233d5c36e37b10a5248f59b1
   Bond: 9e7d901cf4ed825b6004a93dd0a7f1c7479e2834
   Differ: 5cd747e2f29c11ea9605eba7cb369df17e2b1ee2
+  Hero: b7385b75e7259da62f4f85462f59a5082d66b058
   Kingfisher: 0d334cada987fcddbe9b5cec516406e1ee9d4748
   ReactiveKit: c46f8358afe351a9a148c9462ca2d0f5f7b17ca7
   SwiftLint: 55e96a4a4d537d4a3156859fc1c54bd24851a046
   Swinject: ddf78b8486dd9b71a667b852cad919ab4484478e
 
-PODFILE CHECKSUM: 183cd566785c26288bb5530db72ee4315ef58e5e
+PODFILE CHECKSUM: f149fbd6c2cb73cf58e98db4ac9ce7a975d7e5e5
 
 COCOAPODS: 1.8.4
