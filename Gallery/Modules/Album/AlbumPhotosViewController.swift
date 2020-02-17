@@ -31,6 +31,7 @@ class AlbumPhotosViewController: UIViewController {
         
     private func setupViews() {
         navigationItem.title = "Photos"
+        self.hero.isEnabled = true
         
         collectionView.dataSource = self
         collectionView.delegate = gridDelegate
@@ -38,7 +39,6 @@ class AlbumPhotosViewController: UIViewController {
         collectionView.contentInset = UIEdgeInsets(top: spacing * 2, left: 0, bottom: 0, right: 0)
         gridDelegate.setOnCellSelected { [unowned self] (indexPath) in
             let photo = self.viewModel.photos.value[indexPath.row]
-            self.setupHeroAnimations(indexPath: indexPath, photo: photo)
             self.delegate?.onPhotoClicked(photo: photo)
         }
     }
@@ -47,11 +47,6 @@ class AlbumPhotosViewController: UIViewController {
         viewModel.photos.bind(to: self) { vc, _ in
             vc.collectionView.reloadData()
         }
-    }
-    
-    private func setupHeroAnimations(indexPath: IndexPath, photo: Photo) {
-        let cell = collectionView.cellForItem(at: indexPath)
-        cell?.hero.id = String(photo.id)
     }
 }
 

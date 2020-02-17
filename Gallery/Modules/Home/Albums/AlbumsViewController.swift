@@ -29,8 +29,8 @@ class AlbumsViewController: UIViewController {
     }
     
     private func setupViews() {
-        
         navigationItem.title = "Albums"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "ic_list"), style: .plain, target: nil, action: nil)
         
         collectionView.dataSource = self
         collectionView.delegate = gridDelegate

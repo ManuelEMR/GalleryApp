@@ -26,7 +26,8 @@ class PhotoDetailViewController: UIViewController {
     
     private func setupViews() {
         self.hero.isEnabled = true
-        imageView.hero.id = String(viewModel.photo.value.id)
+        let photo = viewModel.photo.value
+        imageView.hero.id = photo.title + String(photo.id)
     }
     
     private func setupBindings() {

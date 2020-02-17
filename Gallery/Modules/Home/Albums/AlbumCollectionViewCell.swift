@@ -27,7 +27,6 @@ class AlbumCollectionViewCell: UICollectionViewCell {
     }
     
     func configure(with album: Album) {
-        
         contentView.layer.borderWidth = 1
         contentView.layer.borderColor = UIColor.gray.cgColor
         
@@ -40,7 +39,9 @@ class AlbumCollectionViewCell: UICollectionViewCell {
         [topLeftImage, topRightImage, botLeftImage, botRightImage]
             .enumerated().forEach { (arg) in
                 let (index, image) = arg
-                image?.load(copy[index].thumbnailUrl)
+                let photo = copy[index]
+                image?.load(photo.thumbnailUrl)
+                image?.hero.id = photo.title + String(photo.id)
         }
     }
 }

@@ -14,5 +14,6 @@ class PhotosCollectionViewCell: UICollectionViewCell {
     
     func configure(with photo: Photo) {
         image.load(photo.thumbnailUrl)
+        image.hero.id = photo.title + String(photo.id)
     }
 }
