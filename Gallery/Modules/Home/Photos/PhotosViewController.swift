@@ -8,14 +8,19 @@
 
 import UIKit
 
+protocol PhotosViewControllerDelegate: AnyObject {
+    func onPhotoClicked(photo: Photo)
+}
+
 class PhotosViewController: UIViewController {
     
     @IBOutlet var collectionView: UICollectionView!
     
     var viewModel: PhotosViewModel! //swiftlint:disable:this implicitly_unwrapped_optional
+    weak var delegate: PhotosViewControllerDelegate?
     
     private let gridDelegate = GridCollectionViewDelegate(numberOfRows: 3, spacing: 0)
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,6 +36,10 @@ class PhotosViewController: UIViewController {
         collectionView.delegate = gridDelegate
         let spacing = gridDelegate.spacing
         collectionView.contentInset = UIEdgeInsets(top: spacing * 2, left: 0, bottom: 0, right: 0)
+        gridDelegate.setOnCellSelected { (indexPath) in
+            let photo = self.viewModel.photos.value[indexPath.item]
+            self.delegate?.onPhotoClicked(photo: photo)
+        }
     }
     
     private func setupBindings() {

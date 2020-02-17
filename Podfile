@@ -29,5 +29,6 @@ target 'Gallery' do
   pod 'Swinject'
   pod 'SwiftLint'
   pod 'Kingfisher'
+  #pod 'Hero'
   #pod 'SwinjectStoryboard'
 end

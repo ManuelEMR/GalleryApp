@@ -22,7 +22,18 @@ class AlbumsPhotoCoordinator: Coordinator {
         return vc
     }()
     
-    func start(albumId: Int) {
-        rootViewController.viewModel = container.resolve(AlbumPhotosViewModel.self, argument: albumId)
+    func start(album: Album) {
+        rootViewController.navigationItem.title = album.title
+        rootViewController.viewModel = container.resolve(AlbumPhotosViewModel.self, argument: album.id)
+        rootViewController.delegate = self
+    }
+}
+
+extension AlbumsPhotoCoordinator: AlbumPhotosViewControllerDelegate {
+    func onPhotoClicked(photo: Photo) {
+        let photoVC = PhotoDetailViewController.instantiate(storyboardName: Storyboards.photoDetail)
+        photoVC.viewModel = container.resolve(PhotoDetailViewModel.self, argument: photo)
+        
+        UIApplication.topViewController()?.navigationController?.pushViewController(photoVC, animated: true)
     }
 }

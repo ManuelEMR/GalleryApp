@@ -8,11 +8,16 @@
 
 import UIKit
 
+protocol AlbumPhotosViewControllerDelegate: AnyObject {
+    func onPhotoClicked(photo: Photo)
+}
+
 class AlbumPhotosViewController: UIViewController {
 
     @IBOutlet var collectionView: UICollectionView!
     
     var viewModel: AlbumPhotosViewModel! //swiftlint:disable:this implicitly_unwrapped_optional
+    weak var delegate: AlbumPhotosViewControllerDelegate?
     
     private let gridDelegate = GridCollectionViewDelegate(numberOfRows: 3, spacing: 0)
     
@@ -24,13 +29,16 @@ class AlbumPhotosViewController: UIViewController {
     }
         
     private func setupViews() {
-        
         navigationItem.title = "Photos"
         
         collectionView.dataSource = self
         collectionView.delegate = gridDelegate
         let spacing = gridDelegate.spacing
         collectionView.contentInset = UIEdgeInsets(top: spacing * 2, left: 0, bottom: 0, right: 0)
+        gridDelegate.setOnCellSelected { [unowned self] (indexPath) in
+            let photo = self.viewModel.photos.value[indexPath.row]
+            self.delegate?.onPhotoClicked(photo: photo)
+        }
     }
     
     private func setupBindings() {
